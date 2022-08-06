@@ -59,7 +59,7 @@ def main():
 
     try:
         results = service.files().list(
-            pageSize=10, fields="nextPageToken, files(id, name)").execute()
+            pageSize=1000, fields="nextPageToken, files(*)").execute()
         items = results.get('files', [])
 
         if not items:
@@ -67,8 +67,14 @@ def main():
             return
         print('File:')
         for item in items:
-            print(u'{0} ({1})'.format(item['name'], item['id']))
-            print(item)
+            # print(u'{0} ({1})'.format(item['name'], item['id']))
+            print(f"Id: {item['id']}")
+            print(f"Name: {item['name']}")
+            print(f"Owner: {item['owners'][0]['emailAddress']}")
+            print(f"shared: {item['shared']}")
+            print(f"modifiedTime: {item['modifiedTime']}")
+            print(f"mimeType: {item['mimeType']}")
+            # print(item)
     except Exception:
         print('Error')
 
