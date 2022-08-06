@@ -68,15 +68,17 @@ def main():
         print('File:')
         for item in items:
             # print(u'{0} ({1})'.format(item['name'], item['id']))
-            print(f"Id: {item['id']}")
-            print(f"Name: {item['name']}")
-            print(f"Owner: {item['owners'][0]['emailAddress']}")
-            print(f"shared: {item['shared']}")
-            print(f"modifiedTime: {item['modifiedTime']}")
-            print(f"mimeType: {item['mimeType']}")
-            # print(item)
+            # print(f"Id: {item['id']}")
+            # print(f"Name: {item['name']}")
+            # print(f"Owner: {item['owners'][0]['emailAddress']}")
+            # print(f"shared: {item['shared']}")
+            # print(f"modifiedTime: {item['modifiedTime']}")
+            # print(f"mimeType: {item['mimeType']}")
+            file = [item['id'], item['name'], item['owners'][0]['emailAddress'], item['shared'], item['modifiedTime'], item['mimeType']]
+            print(file)
+
     except Exception:
-        print('Error')
+        print(f'Error')
 
     # if not items:
     #     print('No files found.')
