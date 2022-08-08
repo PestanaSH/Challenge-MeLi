@@ -67,6 +67,24 @@ def selectById(fileId):
     else:
         return True
 
+
+def insertDataLog(file):
+    print(f'Inserindo na base de dados logFiles')
+    # print(file.id)
+    # print(file.name)
+    # print(file.shared)
+    # print(file.owners)
+    mydb = connection()
+    mycursor = mydb.cursor()
+
+    sql = "insert into logFiles (name, visibility, fileId, owner) VALUES (%s, %s, %s, %s)"
+    val = (file.name, file.shared, file.id, file.owners)
+
+    mycursor.execute(sql, val)
+    mydb.commit()
+    print(mycursor.rowcount, "Data inserido na base de dados logFiles!")
+    print('-=' * 100)
+
 # insertData()
 # selectAll()
 

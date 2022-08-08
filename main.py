@@ -12,7 +12,6 @@ SCOPES = ['https://www.googleapis.com/auth/drive']
 def main():
     print('Start Application')
     service = api()
-    listFiles = []
     try:
         results = service.files().list(
             pageSize=1000, fields="nextPageToken, files(*)").execute()
@@ -27,6 +26,19 @@ def main():
                         item['modifiedTime'],
                         item['mimeType'])
             db.insertData(file)
+        print('Arquivos inseridos na base de dados!')
+
+        print('-=-=' * 100)
+        print('Hist')
+        for item in items:
+            # id, name, owners, shared, modifiedTime, mimeType
+            fileHist = File(item['id'], item['name'], item['owners'][0]['emailAddress'], item['shared'], None, None)
+            print(fileHist.name)
+            print(fileHist.shared)
+            if fileHist.shared is True:
+                # print('Dentro do IF')
+                db.insertDataLog(fileHist)
+
 
     except Exception as error:
         print(f'Error {error}')
