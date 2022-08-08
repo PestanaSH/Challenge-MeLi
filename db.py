@@ -21,16 +21,23 @@ def insertData(file):
     print(file.owners)
     print(f'Extension: {file.mimeType}')
 
-    mydb = connection()
-    mycursor = mydb.cursor()
+    if selectByName(file.id) is False:
 
-    sql = "INSERT INTO files (fileName, extension, fileOwner, lastModify, visibility, fileId) " \
-          "VALUES (%s, %s, %s, %s, %s, %s)"
-    val = (file.name, file.mimeType, file.owners, file.modifiedTime, file.shared, file.id)
-    mycursor.execute(sql, val)
+        mydb = connection()
+        mycursor = mydb.cursor()
 
-    mydb.commit()
-    print(mycursor.rowcount, "record inserted.")
+        sql = "INSERT INTO files (fileName, extension, fileOwner, lastModify, visibility, fileId) " \
+              "VALUES (%s, %s, %s, %s, %s, %s)"
+        val = (file.name, file.mimeType, file.owners, file.modifiedTime, file.shared, file.id)
+        mycursor.execute(sql, val)
+        mydb.commit()
+        print(mycursor.rowcount, "record inserted.")
+        print(f'O arquivo {file.name} foi gravado na base de dados!')
+        print('-=' * 50)
+    else:
+        print('-=' * 50)
+        print(f'O item {file.name} já está salvo na base de dados!')
+        print('-=' * 50)
 
 
 def selectAll():
@@ -45,5 +52,22 @@ def selectAll():
     for x in myresult:
         print(x)
 
+
+def selectByName(fileId):
+    mydb = connection()
+    mycursor = mydb.cursor()
+
+    mycursor.execute(f"SELECT * FROM files WHERE fileId = '{fileId}'")
+
+    result = mycursor.fetchone()
+
+    print(result)
+    if result is None:
+        return False
+    else:
+        return True
+
 # insertData()
 # selectAll()
+
+# print(selectByName('1FOFIQYu93l_nLOKi_2D5tamxQD-YVhaq'))#
