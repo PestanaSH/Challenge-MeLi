@@ -2,11 +2,7 @@ from __future__ import print_function
 
 import db
 from APIDrive import api
-from db import *
 from File import *
-
-# If modifying these scopes, delete the file token.json.
-SCOPES = ['https://www.googleapis.com/auth/drive']
 
 
 def main():
@@ -36,7 +32,6 @@ def main():
             print(fileHist.name)
             print(fileHist.shared)
             if fileHist.shared is True:
-                # print('Dentro do IF')
                 db.insertDataLog(fileHist)
 
 
