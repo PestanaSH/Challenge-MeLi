@@ -21,7 +21,7 @@ def insertData(file):
     print(file.owners)
     print(f'Extension: {file.mimeType}')
 
-    if selectByName(file.id) is False:
+    if selectById(file.id) is False:
 
         mydb = connection()
         mycursor = mydb.cursor()
@@ -53,7 +53,7 @@ def selectAll():
         print(x)
 
 
-def selectByName(fileId):
+def selectById(fileId):
     mydb = connection()
     mycursor = mydb.cursor()
 
