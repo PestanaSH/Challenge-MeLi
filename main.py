@@ -23,9 +23,6 @@ def main():
             return
         print('File:')
         for item in items:
-            # file = [item['id'], item['name'], item['owners'][0]['emailAddress'], item['shared'], item['modifiedTime'],
-            #         item['mimeType']]
-            # print(file)
             file = File(item['id'], item['name'], item['owners'][0]['emailAddress'], item['shared'],
                         item['modifiedTime'],
                         item['mimeType'])

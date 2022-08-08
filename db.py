@@ -19,17 +19,18 @@ def insertData(file):
     print(file.shared)
     print(file.modifiedTime)
     print(file.owners)
+    print(f'Extension: {file.mimeType}')
 
-    # mydb = connection()
-    # mycursor = mydb.cursor()
-    #
-    # sql = "INSERT INTO files (id, fileName, extension, fileOwner, lastModify, visibility) " \
-    #       "VALUES (%s, %s, %s, %s, %s, %s)"
-    # val = (2, "testePython", ".pdf", "lucas.pestana", "2022-04-01", "publico")
-    # mycursor.execute(sql, val)
-    #
-    # mydb.commit()
-    # print(mycursor.rowcount, "record inserted.")
+    mydb = connection()
+    mycursor = mydb.cursor()
+
+    sql = "INSERT INTO files (fileName, extension, fileOwner, lastModify, visibility, fileId) " \
+          "VALUES (%s, %s, %s, %s, %s, %s)"
+    val = (file.name, file.mimeType, file.owners, file.modifiedTime, file.shared, file.id)
+    mycursor.execute(sql, val)
+
+    mydb.commit()
+    print(mycursor.rowcount, "record inserted.")
 
 
 def selectAll():
