@@ -36,9 +36,10 @@ class Database:
             mydb = Database.connection()
             mycursor = mydb.cursor()
 
-            sql = "INSERT INTO files (fileName, extension, fileOwner, lastModify, visibility, fileId) " \
+            sql = "INSERT INTO files (id, name, extension, owner, lastModify, visibility) " \
                   "VALUES (%s, %s, %s, %s, %s, %s)"
-            val = (file.name, file.mimeType, file.owners, file.modifiedTime, file.shared, file.id)
+            print(file.shared)
+            val = (file.id, file.name, file.mimeType, file.owners, file.modifiedTime, str(file.shared))
             mycursor.execute(sql, val)
             mydb.commit()
             print(mycursor.rowcount, "record inserted.")
@@ -67,7 +68,7 @@ class Database:
         mydb = Database.connection()
         mycursor = mydb.cursor()
 
-        mycursor.execute(f"SELECT * FROM files WHERE fileId = '{fileId}'")
+        mycursor.execute(f"SELECT * FROM files WHERE id = '{fileId}'")
 
         result = mycursor.fetchone()
 
@@ -83,8 +84,8 @@ class Database:
         mydb = Database.connection()
         mycursor = mydb.cursor()
 
-        sql = "insert into logFiles (name, visibility, fileId, owner) VALUES (%s, %s, %s, %s)"
-        val = (file.name, file.shared, file.id, file.owners)
+        sql = "insert into logFiles (id, name, visibility, owner) VALUES (%s, %s, %s, %s)"
+        val = (file.id, file.name, file.shared, file.owners)
         mycursor.execute(sql, val)
         mydb.commit()
         print(mycursor.rowcount, "Data inserido na base de dados logFiles!")
