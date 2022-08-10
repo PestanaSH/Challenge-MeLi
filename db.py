@@ -84,9 +84,23 @@ class Database:
         mydb = Database.connection()
         mycursor = mydb.cursor()
 
-        sql = "insert into logFiles (id, name, visibility, owner) VALUES (%s, %s, %s, %s)"
-        val = (file.id, file.name, file.shared, file.owners)
-        mycursor.execute(sql, val)
+        if Database.selectById(file.id) is False:
+            sql = "insert into logFiles (id, name, visibility, owner) VALUES (%s, %s, %s, %s)"
+            val = (file.id, file.name, file.shared, file.owners)
+            mycursor.execute(sql, val)
+            mydb.commit()
+            print(mycursor.rowcount, "Data inserido na base de dados logFiles!")
+            print('-=' * 100)
+        else:
+            print("Arquivo já existe na base de dados!")
+
+    @staticmethod
+    def fileUpdate(fileId):
+        mydb = Database.connection()
+        mycursor = mydb.cursor()
+
+        sql = f"UPDATE files SET visibility='False' WHERE id='{fileId}'"
+        print(f"Print Update {sql}")
+        mycursor.execute(sql)
         mydb.commit()
-        print(mycursor.rowcount, "Data inserido na base de dados logFiles!")
-        print('-=' * 100)
+        print(mycursor.rowcount, "record(s) affected")

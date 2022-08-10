@@ -61,6 +61,7 @@ def main():
                 Database.insertDataLog(fileHist)
                 service.permissions().delete(fileId=fileHist.id, permissionId='anyoneWithLink').execute()
                 send_email(fileHist)
+                Database.fileUpdate(fileHist.id)
 
 
 
