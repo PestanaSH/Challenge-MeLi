@@ -1,3 +1,5 @@
+import json
+
 import mysql.connector
 
 
@@ -5,10 +7,16 @@ class Database:
 
     @staticmethod
     def connection():
+
+        with open('properties.json', 'r') as f:
+            credentials = json.load(f)
+            db_user = credentials["db_user"]
+            db_pwd = credentials["db_pwd"]
+
         mydb = mysql.connector.connect(
             host="localhost",
-            user="root",
-            password="Abc@1234",
+            user=db_user,
+            password=db_pwd,
             database="driver"
         )
         return mydb
