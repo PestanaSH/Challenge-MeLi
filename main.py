@@ -29,10 +29,12 @@ def main():
         for item in items:
             # id, name, owners, shared, modifiedTime, mimeType
             fileHist = File(item['id'], item['name'], item['owners'][0]['emailAddress'], item['shared'], None, None)
-            print(fileHist.name)
-            print(fileHist.shared)
             if fileHist.shared is True:
+                print(f'Name: {fileHist.name}')
                 db.insertDataLog(fileHist)
+                service.permissions().delete(fileId=fileHist.id, permissionId='anyoneWithLink').execute()
+
+
 
 
     except Exception as error:

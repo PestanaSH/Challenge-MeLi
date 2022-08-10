@@ -8,7 +8,6 @@ def connection():
         password="Abc@1234",
         database="driver"
     )
-    print(mydb)
     return mydb
 
 
@@ -70,22 +69,12 @@ def selectById(fileId):
 
 def insertDataLog(file):
     print(f'Inserindo na base de dados logFiles')
-    # print(file.id)
-    # print(file.name)
-    # print(file.shared)
-    # print(file.owners)
     mydb = connection()
     mycursor = mydb.cursor()
 
     sql = "insert into logFiles (name, visibility, fileId, owner) VALUES (%s, %s, %s, %s)"
     val = (file.name, file.shared, file.id, file.owners)
-
     mycursor.execute(sql, val)
     mydb.commit()
     print(mycursor.rowcount, "Data inserido na base de dados logFiles!")
     print('-=' * 100)
-
-# insertData()
-# selectAll()
-
-# print(selectByName('1FOFIQYu93l_nLOKi_2D5tamxQD-YVhaq'))#
