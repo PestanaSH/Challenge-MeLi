@@ -1,13 +1,11 @@
 from __future__ import print_function
 
 import base64
-import email.message
-import smtplib
 from email.message import EmailMessage
 
-import db
 from APIDrive import api
 from File import *
+from db import Database
 
 
 def send_email(file):
@@ -50,7 +48,7 @@ def main():
             file = File(item['id'], item['name'], item['owners'][0]['emailAddress'], item['shared'],
                         item['modifiedTime'],
                         item['mimeType'])
-            db.insertData(file)
+            Database.insertData(file)
         print('Arquivos inseridos na base de dados!')
 
         print('-=-=' * 100)
@@ -60,7 +58,7 @@ def main():
             fileHist = File(item['id'], item['name'], item['owners'][0]['emailAddress'], item['shared'], None, None)
             if fileHist.shared is True:
                 print(f'Name: {fileHist.name}')
-                db.insertDataLog(fileHist)
+                Database.insertDataLog(fileHist)
                 service.permissions().delete(fileId=fileHist.id, permissionId='anyoneWithLink').execute()
                 send_email(fileHist)
 
