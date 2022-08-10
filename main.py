@@ -1,6 +1,8 @@
 from __future__ import print_function
 
 import base64
+import email.message
+import smtplib
 from email.message import EmailMessage
 
 import db
@@ -13,7 +15,7 @@ def send_email(file):
     gmail = api('gmail')
     message = EmailMessage()
 
-    msg = f'Prezado(a), por conta de segurança, a visibilidade do arquivo "{file.name}" foi modificado'
+    msg = f'Prezado(a), por motivo de segurança, a visibilidade do arquivo "{file.name}" foi modificado.'
     message.set_content(msg)
 
     # headers
@@ -27,8 +29,9 @@ def send_email(file):
     create_message = {
         'raw': encoded_message
     }
-    user = 'lucas.challenge.meli@gmail.com'
+    user = 'lucas.pestana.codigos@gmail.com'
     gmail.users().messages().send(userId=user, body=create_message).execute()
+    print('Email enviado!')
 
 
 def main():
