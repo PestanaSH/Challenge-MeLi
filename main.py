@@ -1,13 +1,39 @@
 from __future__ import print_function
 
+import base64
+from email.message import EmailMessage
+
 import db
 from APIDrive import api
 from File import *
 
 
+def send_email(file):
+    # create gmail api client
+    gmail = api('gmail')
+    message = EmailMessage()
+
+    msg = f'Prezado(a), por conta de segurança, a visibilidade do arquivo "{file.name}" foi modificado'
+    message.set_content(msg)
+
+    # headers
+    message['To'] = file.owners
+    message['From'] = 'lucas.challenge.meli@gmail.com'
+    message['Subject'] = f'Documento Drive - {file.name}'
+
+    # encoded message
+    encoded_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
+
+    create_message = {
+        'raw': encoded_message
+    }
+    user = 'lucas.challenge.meli@gmail.com'
+    gmail.users().messages().send(userId=user, body=create_message).execute()
+
+
 def main():
     print('Start Application')
-    service = api()
+    service = api('drive')
     try:
         results = service.files().list(
             pageSize=1000, fields="nextPageToken, files(*)").execute()
@@ -33,6 +59,7 @@ def main():
                 print(f'Name: {fileHist.name}')
                 db.insertDataLog(fileHist)
                 service.permissions().delete(fileId=fileHist.id, permissionId='anyoneWithLink').execute()
+                send_email(fileHist)
 
 
 

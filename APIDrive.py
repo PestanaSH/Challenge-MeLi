@@ -6,13 +6,12 @@ from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/gmail.send']
 
 
-def api():
+def api(api):
     """Shows basic usage of the Drive v3 API.
     Prints the names and ids of the first 10 files the user has access to.
     """
@@ -31,6 +30,9 @@ def api():
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
 
+    if api == 'gmail':
+        service = build('gmail', 'v1', credentials=creds)
+        return service
+
     service = build('drive', 'v3', credentials=creds)
     return service
-
