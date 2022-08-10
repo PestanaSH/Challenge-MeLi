@@ -64,8 +64,6 @@ def main():
                 Database.fileUpdate(fileHist.id)
 
 
-
-
     except Exception as error:
         print(f'Error {error}')
 

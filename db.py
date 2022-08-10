@@ -31,7 +31,7 @@ class Database:
         print(file.owners)
         print(f'Extension: {file.mimeType}')
 
-        if Database.selectById(file.id) is False:
+        if Database.selectById(file.id, 'files') is False:
 
             mydb = Database.connection()
             mycursor = mydb.cursor()
@@ -64,11 +64,11 @@ class Database:
             print(x)
 
     @staticmethod
-    def selectById(fileId):
+    def selectById(fileId, table):
         mydb = Database.connection()
         mycursor = mydb.cursor()
 
-        mycursor.execute(f"SELECT * FROM files WHERE id = '{fileId}'")
+        mycursor.execute(f"SELECT * FROM {table} WHERE id = '{fileId}'")
 
         result = mycursor.fetchone()
 
@@ -84,7 +84,7 @@ class Database:
         mydb = Database.connection()
         mycursor = mydb.cursor()
 
-        if Database.selectById(file.id) is False:
+        if Database.selectById(file.id, 'logFiles') is False:
             sql = "insert into logFiles (id, name, visibility, owner) VALUES (%s, %s, %s, %s)"
             val = (file.id, file.name, file.shared, file.owners)
             mycursor.execute(sql, val)
