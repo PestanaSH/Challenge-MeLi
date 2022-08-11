@@ -5,12 +5,12 @@ Documentos de desafio no Drive Public
 
 Desenvolva um aplicativo para inventariar em um banco de dados todos os arquivos pertencentes à unidade de disco de um usuário. O banco de dados deve ser criado dentro do aplicativo, usando qualquer mecanismo (por exemplo, MySQL ou Redis). Esta base deve armazenar o nome do arquivo, a extensão, o proprietário do arquivo, a visibilidade (pública ou privada) e o fechamento da última modificação. Caso encontre arquivos que estejam configurados como públicos e possam ser acessados ​​por qualquer pessoa, você deve modificar esta configuração para tornar o arquivo privado e enviar um e-mail ao proprietário notificando a alteração realizada. A aplicação deve ter a lógica necessária para salvar no banco de dados apenas os arquivos que não foram salvos em nenhuma execução anterior ou atualizar o bloqueio de modificação ou qualquer outro dado em caso de correspondência. Você também deve manter um inventário histórico de todos os arquivos que já foram públicos. Esta aplicação deve ser desenvolvida em Python e deve ter testes que verifiquem o seu bom funcionamento. Prima:
 
-Aplicar boas práticas de programação.
-Documentação e bibliografia consultadas.
-Tratamento seguro das credenciais utilizadas.
-Dockerize o aplicativo. Quanto mais fácil de reproduzir o desafio, melhor :)
+- Aplicar boas práticas de programação.
+- Documentação e bibliografia consultadas.
+- Tratamento seguro das credenciais utilizadas.
+- Dockerize o aplicativo. Quanto mais fácil de reproduzir o desafio, melhor :)
 
-## Código fuente
+## Código fonte
 
 ### Base de dados
 

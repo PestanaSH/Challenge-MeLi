@@ -27,40 +27,40 @@ Cuanto más fácil sea reproducir el challenge, mejor :)
 
 ### Base de datos
 
-O arquivo db.py consulta as seguintes tabelas:
-- Tabela files que tem as seguintes colunas:
-  - id
-  - name
-  - extension
-  - owner
-  - lastModify
-  - visibility
-- Tabela que tem as seguintes colunas:
-  - id
-  - name
-  - visibility
-  - owner
+El archivo db.py consulta las siguientes tablas:
+- Tabla de archivos que tiene las siguientes columnas:
+  - identificación
+  - nombre
+  - extensión
+  - dueño
+  - últimoModificar
+  - visibilidad
+- Tabla que tiene las siguientes columnas:
+  - identificación
+  - nombre
+  - visibilidad
+  - dueño
 
-O arquivo db.py faz as seguintes operações:
-- Conexão com a base de dados
-- Inserir os arquivos na tabela files
-- Inserir os arquivos que estão com públicos na tabela logFiles
-- Consultar se o arquivo já está gravada na tabela files
-- Consultar se o arquivo já está gravado na tabela logFiles
-- Atualização dos arquivos que estão publicos na tabela files
+El archivo db.py realiza las siguientes operaciones:
+- Conexión de base de datos
+- Insertar los archivos en la tabla de archivos
+- Insertar los archivos que tienen público en la tabla logFiles
+- Consultar si el archivo ya está registrado en la tabla de archivos
+- Consulta si el archivo ya está registrado en la tabla logFiles
+- Actualizar los archivos que son públicos en la tabla de archivos
 
 ### APIDrive
-O arquivo APIDrive.py contém a função "api()", que faz a conexão na API do Google Drive,
-e gera um arquivo token.json que armazena os tokens de acesso. O arquivo é criado automaticamente
-quando a autorização se completa pela primeira vez.
+El archivo APIDrive.py contiene la función "api()", que realiza la conexión en la API de Google Drive,
+y genera un archivo token.json que almacena los tokens de acceso. El archivo se crea automáticamente.
+cuando la autorización se completa por primera vez.
 
-### main
-O arquivo main.py é onde acontece a lógica principal da aplicação, logo realiza as conexões nos bancos de dados e a
-conexão na API do Google Drive. Lista todos os arquivos do Drive e valida se os arquivos já existem na base de dados, e
-também valida se os arquivos são públicos ou privados. Após essas validações o programa modifica a visibilidade dos arquivos
-publicos, manda o e-mail para o responsável do arquivo e atualiza as informações na base de dados.
+### principal
+El archivo main.py es donde sucede la lógica principal de la aplicación, luego hace las conexiones en las bases de datos y el
+conexión a la API de Google Drive. Enumera todos los archivos de Drive y valida que los archivos ya existen en la base de datos, y
+también valida si los archivos son públicos o privados. Tras estas validaciones, el programa modifica la visibilidad de los archivos
+público, enviar el correo electrónico al responsable del fichero y actualizar la información en la base de datos.
 
-## Bibliografia
+## Bibliografía
 
 - https://docs.python.org/
 - https://developers.google.com/drive/api/quickstart/python
