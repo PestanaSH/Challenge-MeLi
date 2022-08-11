@@ -1,27 +1,14 @@
 # Challenge-MeLi
 Challenge Docs en Drive Públicos
 
-Desarrollar una aplicación para inventariar en una Base de Datos todos los archivos
-pertenecientes a la unidad de Drive de un usuario.
-La base de datos debe ser creada desde la aplicación, pudiéndose utilizar cualquier motor
-(por ejemplo MySQL o Redis). Dicha base deberá almacenar el nombre del archivo, la
-extensión, el owner del archivo, la visibilidad (público o privado) y la fecha de última
-modificación.
-En el caso de encontrar archivos que estén configurados como públicos y puedan ser
-accedidos por cualquier persona, deberá modificar dicha configuración para establecer el
-archivo como privado y enviar un e-mail al owner notificando el cambio realizado.
-La aplicación deberá tener la lógica necesaria para guardar en la base sólo aquellos
-archivos que no hayan sido almacenados en alguna corrida anterior o actualizar la fecha de
-modificación o cualquier otro dato en caso de corresponder. Asimismo, deberá mantener un
-inventario histórico de todos los archivos que fueron en algún momento públicos.
-Esta aplicación debe ser desarrollada en Python y deberá contar con tests que verifiquen su
-buen funcionamiento.
-Bonús:
-- Aplicar buenas prácticas de programación.
-- Documentación y bibliografía consultada.
-- Tratamiento seguro de las credenciales utilizadas.
-- Dockerizar la aplicación.
-Cuanto más fácil sea reproducir el challenge, mejor :)
+Documentos de desafio no Drive Public
+
+Desenvolva um aplicativo para inventariar em um banco de dados todos os arquivos pertencentes à unidade de disco de um usuário. O banco de dados deve ser criado dentro do aplicativo, usando qualquer mecanismo (por exemplo, MySQL ou Redis). Esta base deve armazenar o nome do arquivo, a extensão, o proprietário do arquivo, a visibilidade (pública ou privada) e o fechamento da última modificação. Caso encontre arquivos que estejam configurados como públicos e possam ser acessados ​​por qualquer pessoa, você deve modificar esta configuração para tornar o arquivo privado e enviar um e-mail ao proprietário notificando a alteração realizada. A aplicação deve ter a lógica necessária para salvar no banco de dados apenas os arquivos que não foram salvos em nenhuma execução anterior ou atualizar o bloqueio de modificação ou qualquer outro dado em caso de correspondência. Você também deve manter um inventário histórico de todos os arquivos que já foram públicos. Esta aplicação deve ser desenvolvida em Python e deve ter testes que verifiquem o seu bom funcionamento. Prima:
+
+Aplicar boas práticas de programação.
+Documentação e bibliografia consultadas.
+Tratamento seguro das credenciais utilizadas.
+Dockerize o aplicativo. Quanto mais fácil de reproduzir o desafio, melhor :)
 
 ## Código fuente
 
