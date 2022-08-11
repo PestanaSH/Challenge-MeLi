@@ -35,6 +35,10 @@ def send_email(file):
 def main():
     print('Start Application')
     service = api('drive')
+
+    Database.createTableFiles()
+    Database.createTableFileLogs()
+
     try:
         results = service.files().list(
             pageSize=1000, fields="nextPageToken, files(*)").execute()

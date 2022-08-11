@@ -27,7 +27,7 @@ Cuanto más fácil sea reproducir el challenge, mejor :)
 
 ### Base de datos
 
-El archivo db.py consulta las siguientes tablas:
+El archivo db.py crear las siguientes tablas:
 - Tabla de archivos que tiene las siguientes columnas:
   - identificación
   - nombre

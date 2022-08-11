@@ -21,6 +21,29 @@ class Database:
         )
         return mydb
 
+    @staticmethod
+    def createTableFiles():
+        mydb = Database.connection()
+        mycursor = mydb.cursor()
+
+        sql = "create table if not exists files(id varchar(100) not null,name varchar(255) not null,extension " \
+              "varchar(20) not null," \
+              "owner varchar(200) not null, lastModify varchar(100) not null,visibility enum('True', 'False')," \
+              "primary key(id));"
+
+        mycursor.execute(sql)
+
+    @staticmethod
+    def createTableFileLogs():
+        mydb = Database.connection()
+        mycursor = mydb.cursor()
+
+        sql = "create table if not exists logFiles(id varchar(100) not null,name varchar(255) not null,visibility " \
+              "enum('True', " \
+              "'False'),owner varchar(200) not null,primary key(id)); "
+
+        mycursor.execute(sql)
+
     # Função para inserir os dados na base de dados
     @staticmethod
     def insertData(file):

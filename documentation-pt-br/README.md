@@ -14,7 +14,7 @@ Desenvolva um aplicativo para inventariar em um banco de dados todos os arquivos
 
 ### Base de dados
 
-O arquivo db.py consulta as seguintes tabelas:
+O arquivo db.py cria as seguintes tabelas:
 - Tabela files que tem as seguintes colunas:
   - id
   - name
