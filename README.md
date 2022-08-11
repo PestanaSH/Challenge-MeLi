@@ -62,7 +62,7 @@ publicos, manda o e-mail para o responsável do arquivo e atualiza as informaç�
 
 ## Bibliografia
 
-https://docs.python.org/
-https://developers.google.com/drive/api/quickstart/python
-https://developers.google.com/gmail/api/quickstart/python
-https://stackoverflow.com
+- https://docs.python.org/
+- https://developers.google.com/drive/api/quickstart/python
+- https://developers.google.com/gmail/api/quickstart/python
+- https://stackoverflow.com
