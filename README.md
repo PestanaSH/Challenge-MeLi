@@ -54,7 +54,7 @@ El archivo APIDrive.py contiene la función "api()", que realiza la conexión en
 y genera un archivo token.json que almacena los tokens de acceso. El archivo se crea automáticamente.
 cuando la autorización se completa por primera vez.
 
-### principal
+### main
 El archivo main.py es donde sucede la lógica principal de la aplicación, luego hace las conexiones en las bases de datos y el
 conexión a la API de Google Drive. Enumera todos los archivos de Drive y valida que los archivos ya existen en la base de datos, y
 también valida si los archivos son públicos o privados. Tras estas validaciones, el programa modifica la visibilidad de los archivos
