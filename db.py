@@ -34,7 +34,7 @@ class Database:
             password=db_pwd
         )
         mycursor = mydb.cursor()
-        mycursor.execute("CREATE DATABASE DocsDrive")
+        mycursor.execute("CREATE DATABASE IF NOT EXISTS DocsDrive")
 
     @staticmethod
     def createTableFiles():
@@ -62,13 +62,9 @@ class Database:
     # Função para inserir os dados na base de dados
     @staticmethod
     def insertData(file):
-        print(file.id)
-        print(file.name)
-        print(file.shared)
-        print(file.modifiedTime)
-        print(file.owners)
-        print(f'Extension: {file.mimeType}')
+        # print(file)
 
+        print(file.name)
         if Database.selectById(file.id, 'files') is False:
 
             mydb = Database.connection()
@@ -76,13 +72,12 @@ class Database:
 
             sql = "INSERT INTO files (id, name, extension, owner, lastModify, visibility) " \
                   "VALUES (%s, %s, %s, %s, %s, %s)"
-            print(file.shared)
             val = (file.id, file.name, file.mimeType, file.owners, file.modifiedTime, str(file.shared))
             mycursor.execute(sql, val)
             mydb.commit()
             print(mycursor.rowcount, "record inserted.")
             print(f'O arquivo {file.name} foi gravado na base de dados!')
-            print('-=' * 50)
+            print('-=' * 100)
         else:
             print('-=' * 50)
             print(f'O item {file.name} já está salvo na base de dados!')
@@ -138,7 +133,6 @@ class Database:
         mycursor = mydb.cursor()
 
         sql = f"UPDATE files SET visibility='False' WHERE id='{fileId}'"
-        print(f"Print Update {sql}")
         mycursor.execute(sql)
         mydb.commit()
         print(mycursor.rowcount, "record(s) affected")

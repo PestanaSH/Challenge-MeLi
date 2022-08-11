@@ -29,7 +29,7 @@ def send_email(file):
     }
     user = 'lucas.pestana.codigos@gmail.com'
     gmail.users().messages().send(userId=user, body=create_message).execute()
-    print('Email enviado!')
+    print(f'Email enviado para {file.owners}')
 
 
 def main():
