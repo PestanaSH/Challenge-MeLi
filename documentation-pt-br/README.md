@@ -10,6 +10,17 @@ Desenvolva um aplicativo para inventariar em um banco de dados todos os arquivos
 - Tratamento seguro das credenciais utilizadas.
 - Dockerize o aplicativo. Quanto mais fácil de reproduzir o desafio, melhor :)
 
+##Pré - requisitos
+
+Para executar o código, faça o download do código neste repositorio.
+Requisitos para executar o código:
+* Python
+* MySql
+* Instalar as seguintes libs:
+	*  pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+	*  pip install google-api-python-client
+	*  pip install mysql-connector-python
+
 ## Código fonte
 
 ### Base de dados
