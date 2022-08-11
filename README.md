@@ -23,6 +23,16 @@ Bonús:
 - Dockerizar la aplicación.
 Cuanto más fácil sea reproducir el challenge, mejor :)
 
+## Requisitos Previos
+Para ejecutar el código, descárguelo de este repositorio (https://github.com/PestanaSH/Challenge-MeLi).
+Requisitos para ejecutar el código:
+* Python
+* MySql
+* Instale las siguientes bibliotecas:
+	*  pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+	*  pip install google-api-python-client
+	*  pip install mysql-connector-python
+
 ## Código fuente
 
 ### Base de datos

@@ -12,7 +12,7 @@ Desenvolva um aplicativo para inventariar em um banco de dados todos os arquivos
 
 ##Pré - requisitos
 
-Para executar o código, faça o download do código neste repositorio.
+Para executar o código, faça o download do código neste repositorio (https://github.com/PestanaSH/Challenge-MeLi).
 Requisitos para executar o código:
 * Python
 * MySql
