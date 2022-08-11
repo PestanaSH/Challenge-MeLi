@@ -18,7 +18,7 @@ def send_email(file):
 
     # headers
     message['To'] = file.owners
-    message['From'] = 'lucas.challenge.meli@gmail.com'
+    message['From'] = 'lucas.pestana.codigos@gmail.com'
     message['Subject'] = f'Documento Drive - {file.name}'
 
     # encoded message
