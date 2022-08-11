@@ -36,8 +36,12 @@ def main():
     print('Start Application')
     service = api('drive')
 
-    Database.createTableFiles()
-    Database.createTableFileLogs()
+    try:
+        Database.createDatabase()
+        Database.createTableFiles()
+        Database.createTableFileLogs()
+    except Exception as error:
+        print(f'Database error: {error}')
 
     try:
         results = service.files().list(

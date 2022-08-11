@@ -17,9 +17,24 @@ class Database:
             host="localhost",
             user=db_user,
             password=db_pwd,
-            database="driver"
+            database="DocsDrive"
         )
         return mydb
+
+    @staticmethod
+    def createDatabase():
+        with open('properties.json', 'r') as f:
+            credentials = json.load(f)
+            db_user = credentials["db_user"]
+            db_pwd = credentials["db_pwd"]
+
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user=db_user,
+            password=db_pwd
+        )
+        mycursor = mydb.cursor()
+        mycursor.execute("CREATE DATABASE DocsDrive")
 
     @staticmethod
     def createTableFiles():
@@ -27,7 +42,7 @@ class Database:
         mycursor = mydb.cursor()
 
         sql = "create table if not exists files(id varchar(100) not null,name varchar(255) not null,extension " \
-              "varchar(20) not null," \
+              "varchar(150) not null," \
               "owner varchar(200) not null, lastModify varchar(100) not null,visibility enum('True', 'False')," \
               "primary key(id));"
 
